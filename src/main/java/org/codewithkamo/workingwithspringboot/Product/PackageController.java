@@ -1,13 +1,15 @@
 package org.codewithkamo.workingwithspringboot.Product;
 
 
-import org.codewithkamo.workingwithspringboot.Service.CreateProductService;
-import org.codewithkamo.workingwithspringboot.Service.DeleteProductService;
-import org.codewithkamo.workingwithspringboot.Service.GetProductService;
-import org.codewithkamo.workingwithspringboot.Service.UpdateProductService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.codewithkamo.workingwithspringboot.Product.Service.CreateProductService;
+import org.codewithkamo.workingwithspringboot.Product.Service.DeleteProductService;
+import org.codewithkamo.workingwithspringboot.Product.Service.GetProductService;
+import org.codewithkamo.workingwithspringboot.Product.Service.UpdateProductService;
+import org.codewithkamo.workingwithspringboot.Product.model.ProductEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class PackageController {
@@ -37,23 +39,22 @@ public class PackageController {
     //define the main mapping
     @PostMapping
     public ResponseEntity<String> createProduct(){
-
-        return createProductService.execute();
+        return createProductService.execute(null);
     }
 
     @GetMapping
-    public ResponseEntity<String> getProduct(){
-        return getProductService.execute();
+    public ResponseEntity<List<ProductEntity>> getProducts(){
+        return getProductService.execute(null);
     }
 
     @PutMapping
     public ResponseEntity<String> updateProduct(){
-        return updateProductService.execute();
+        return updateProductService.execute(null);
     }
 
     @DeleteMapping
     public ResponseEntity<String> deleteProduct(){
-        return deleteProductService.excute();
+        return deleteProductService.execute(null);
     }
 }
 

@@ -5,6 +5,7 @@ import org.codewithkamo.workingwithspringboot.Product.Service.CreateProductServi
 import org.codewithkamo.workingwithspringboot.Product.Service.DeleteProductService;
 import org.codewithkamo.workingwithspringboot.Product.Service.GetProductService;
 import org.codewithkamo.workingwithspringboot.Product.Service.UpdateProductService;
+import org.codewithkamo.workingwithspringboot.Product.model.ProductDTO;
 import org.codewithkamo.workingwithspringboot.Product.model.ProductEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,8 +39,8 @@ public class PackageController {
 
     //define the main mapping
     @PostMapping
-    public ResponseEntity<String> createProduct(){
-        return createProductService.execute(null);
+    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductEntity productEntity){
+        return createProductService.execute(productEntity);
     }
 
     @GetMapping
